@@ -34,7 +34,7 @@ function __updateSettings {
 }
 
 # Shell profiles
-__updateSettings "${ROOTDIR}/shell" "${HOME}"
+__updateSettings "${ROOTDIR}/shell/home" "${HOME}"
 
 # VS Code settings
 __updateSettings "${ROOTDIR}/vscode" "${HOME}/.config/Code/User"
