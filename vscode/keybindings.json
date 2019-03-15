@@ -12,5 +12,15 @@
         "key": "ctrl+shift+m",
         "command": "workbench.action.toggleMaximizedPanel",
         "when": "terminalFocus"
+    },
+    {
+        "key": "shift+alt+right",
+        "command": "workbench.action.terminal.focusNext",
+        "when": "terminalFocus"
+    },
+    {
+        "key": "shift+alt+left",
+        "command": "workbench.action.terminal.focusPrevious",
+        "when": "terminalFocus"
     }
 ]
