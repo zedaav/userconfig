@@ -24,5 +24,6 @@
         "-l",
         "160"
     ],
-    "python.workspaceSymbols.rebuildOnFileSave": true
+    "python.workspaceSymbols.rebuildOnFileSave": true,
+    "window.titleBarStyle": "custom"
 }
