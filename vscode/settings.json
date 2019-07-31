@@ -25,5 +25,6 @@
         "160"
     ],
     "python.workspaceSymbols.rebuildOnFileSave": true,
-    "window.titleBarStyle": "custom"
+    "window.titleBarStyle": "custom",
+    "gitlens.views.repositories.location": "scm"
 }
