@@ -22,5 +22,9 @@
         "key": "shift+alt+left",
         "command": "workbench.action.terminal.focusPrevious",
         "when": "terminalFocus"
+    },
+    {
+        "key": "ctrl+shift+R",
+        "command": "workbench.action.tasks.runTask"
     }
 ]
