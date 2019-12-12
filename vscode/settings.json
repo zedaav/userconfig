@@ -26,5 +26,11 @@
     ],
     "python.workspaceSymbols.rebuildOnFileSave": true,
     "window.titleBarStyle": "custom",
-    "gitlens.views.repositories.location": "scm"
+    "gitlens.views.repositories.location": "scm",
+    "cSpell.userWords": [
+        "gnupg",
+        "jnlp",
+        "woma"
+    ],
+    "terminal.integrated.shell.linux": "/bin/bash",
 }
