@@ -1,3 +1,14 @@
 # Custom path with hour and last command result
-# See http://bashrcgenerator.com/ for update
-export PS1="\[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[$(tput bold)\]\[\033[38;5;10m\]\u@\h\[\033[38;5;15m\]:\[\033[01;34m\]\w\[$(tput sgr0)\] \[\033[38;5;11m\]\A \[\033[38;5;9m\][\$?]\[\033[38;5;15m\] \\$\[$(tput sgr0)\] "
+function __updateMyPrompt {
+    # Colors and styles
+    local RST="\[\e[0m\]"   # Reset
+    local BLD="\[\e[1m\]"   # Bold
+    local GRN="\[\e[32m\]"  # Green
+    local WHT="\[\e[97m\]"  # White
+    local BLU="\[\e[34m\]"  # Blue
+    local YLW="\[\e[93m\]"  # Yellow
+    local RED="\[\e[91m\]"  # Red
+    PS1="\[\e]0;\u@\h: \w\a\]${BLD}${GRN}\u@\h${WHT}:${BLU}\w${RST} ${YLW}\A ${RED}[\$?]${RST} \$ "
+}
+
+PROMPT_COMMAND=__updateMyPrompt
