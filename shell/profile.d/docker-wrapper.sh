@@ -35,6 +35,8 @@ function __wrapToDocker {
         -v "${HOME}":"${HOME}" \
         -v $TMPPASSWD:/etc/passwd:ro \
         -v $TMPGROUP:/etc/group:ro \
+        -v /etc/timezone:/etc/timezone:ro \
+        -v /etc/localtime:/etc/localtime:ro \
         -e DKIMG=${DKIMG} \
         --network host \
         -w ${DKDIR} \
