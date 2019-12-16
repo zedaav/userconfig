@@ -24,8 +24,16 @@ function __wrapToDocker {
     DKDIR="${DKDIR:-${PWD}}"
 
     # Prepare user settings
-    local TMPPASSWD=/tmp/passwd.tmp
-    local TMPGROUP=/etc/group
+    if uname -a | grep -q Microsoft; then
+        # WSL: prepare tmp files a bit differently
+        local TMPPASSWD=/c/tmp/passwd
+        local TMPGROUP=/c/tmp/group
+        mkdir -p /c/tmp
+        cp /etc/group "$TMPGROUP"
+    else
+        local TMPPASSWD=/tmp/passwd.tmp
+        local TMPGROUP=/etc/group
+    fi
     cp /etc/passwd "$TMPPASSWD"
     sed -i $TMPPASSWD -e "s|^`whoami`:|${DKUSER}:|"
 
