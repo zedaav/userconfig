@@ -20,7 +20,7 @@ function __wrapToDocker {
     # Some default values
     DKIMG="${DKIMG:-ubuntu:latest}"
     DKCMD="${DKCMD:-/bin/bash}"
-    DKUSER="${DKUSER:-$(whoami)}"
+    DKUSER="${DKUSER:-$(id -un)}"
     DKDIR="${DKDIR:-${PWD}}"
 
     # Prepare user settings
@@ -29,13 +29,23 @@ function __wrapToDocker {
         local TMPPASSWD=/c/tmp/passwd
         local TMPGROUP=/c/tmp/group
         mkdir -p /c/tmp
-        cp /etc/group "$TMPGROUP"
     else
-        local TMPPASSWD=/tmp/passwd.tmp
-        local TMPGROUP=/etc/group
+        local TMPPASSWD=/tmp/`id -u`.passwd.tmp
+        local TMPGROUP=/tmp/`id -u`.group.tmp
     fi
     cp /etc/passwd "$TMPPASSWD"
-    sed -i $TMPPASSWD -e "s|^`whoami`:|${DKUSER}:|"
+    cp /etc/group "$TMPGROUP"
+    if grep -qE "^`id -un`:" $TMPPASSWD; then
+        # Just rename user to required one
+        sed -i $TMPPASSWD -e "s|^`id -un`:|${DKUSER}:|"
+    else
+        # Add entry (user probably exists in NIS only)
+        echo "${DKUSER}:x:`id -u`:`id -g`:${DKUSER},,,:${HOME}:/bin/bash" >> $TMPPASSWD
+    fi
+    if grep -qvE "^`id -gn`:" $TMPGROUP; then
+        # Add entry (group probably exists in NIS only)
+        echo "`id -gn`:x:`id -g`:" >> $TMPGROUP
+    fi
 
     # Step into docker
     docker run --rm -ti \
