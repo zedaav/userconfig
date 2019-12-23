@@ -18,13 +18,22 @@ function __updateMyPrompt {
 
         # Maybe DKIMG is set?
         if test -n "${DKIMG}"; then
+            # Add it to terminal window title
             TENV="(${DKIMG}) "
         fi
     elif uname -a | grep -q Microsoft; then
         # we're running in a WSL terminal
         XENV="[wsl] "
     fi
-    PS1="\[\e]0;${XENV}${TENV}\u@\h: \w\a\]${BLD}${XENV}${GRN}\u@\h${WHT}:${BLU}\w${RST} ${YLW}\A ${RED}[\$?]${RST} \$ "
+    
+    # Python virtual env?
+    local VENV=""
+    if test -n "${VIRTUAL_ENV}"; then
+        VENV="${YLW}($(basename ${VIRTUAL_ENV}))${RST} "
+    fi
+
+    # Finally set PS1
+    export PS1="\[\e]0;${XENV}${TENV}\u@\h: \w\a\]${XENV}${VENV}${BLD}${GRN}\u@\h${WHT}:${BLU}\w${RST} ${YLW}\A ${RED}[\$?]${RST} \$ "
 }
 
 PROMPT_COMMAND=__updateMyPrompt
