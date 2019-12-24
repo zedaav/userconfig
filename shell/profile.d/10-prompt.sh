@@ -1,5 +1,8 @@
 # Custom path with hour and last command result
 function __updateMyPrompt {
+    # First of all, remember last RC
+    local LASTRC=$?
+
     # Colors and styles
     local RST="\[\e[0m\]"   # Reset
     local BLD="\[\e[1m\]"   # Bold
@@ -32,8 +35,15 @@ function __updateMyPrompt {
         VENV="${YLW}($(basename ${VIRTUAL_ENV}))${RST} "
     fi
 
+    # Last RC is non-0?
+    local RCDISP=""
+    if test "${LASTRC}" != 0; then
+        RCDISP=" ${RED}[${LASTRC}]"
+    fi
+
     # Finally set PS1
-    export PS1="\[\e]0;${XENV}${TENV}\u@\h: \w\a\]${XENV}${VENV}${BLD}${GRN}\u@\h${WHT}:${BLU}\w${RST} ${YLW}\A ${RED}[\$?]${RST} \$ "
+    export PS1="\[\e]0;${XENV}${TENV}\u@\h: \w\a\]${XENV}${VENV}${BLD}${GRN}\u@\h${WHT}:${BLU}\w${RST} ${YLW}\A${RCDISP}${RST} \$ "
 }
 
+# Hook function to reckon PS1 every time
 PROMPT_COMMAND=__updateMyPrompt
