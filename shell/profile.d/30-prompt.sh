@@ -12,21 +12,23 @@ function __updateMyPrompt {
     local YLW="\[\e[93m\]"  # Yellow
     local RED="\[\e[91m\]"  # Red
     
+    # Handle last exec duration
+    local TMDSP=""
+    if test -n "$LAST_EXEC_TIME_STR"; then
+        TMDSP="${YLW}[${LAST_EXEC_TIME_STR}]"
+    fi
+
     # Check execution environment
     local XENV=""
     local TENV=""
-    if test -e /.dockerenv; then
-        # we're running in a Docker container
-        XENV="[dk] "
+    if test -n "${EXEX_ENV}"; then
+        XENV="[${EXEX_ENV}] "
 
         # Maybe DKIMG is set?
-        if test -n "${DKIMG}"; then
+        if test "${EXEX_ENV}" == "dk" -a -n "${DKIMG}"; then
             # Add it to terminal window title
             TENV="(${DKIMG}) "
         fi
-    elif uname -a | grep -q Microsoft; then
-        # we're running in a WSL terminal
-        XENV="[wsl] "
     fi
     
     # Python virtual env?
@@ -36,14 +38,11 @@ function __updateMyPrompt {
     fi
 
     # Last RC is non-0?
-    local RCDISP=""
+    local RCDSP=""
     if test "${LASTRC}" != 0; then
-        RCDISP=" ${RED}[${LASTRC}]"
+        RCDSP="${RED}[${LASTRC}]"
     fi
 
     # Finally set PS1
-    export PS1="\[\e]0;${XENV}${TENV}\u@\h: \w\a\]${XENV}${VENV}${BLD}${GRN}\u@\h${WHT}:${BLU}\w${RST} ${YLW}\A${RCDISP}${RST} \$ "
+    export PS1="\[\e]0;${XENV}${TENV}\u@\h: \w\a\]${XENV}${VENV}${BLD}${GRN}\u@\h${WHT}:${BLU}\w${RST}${TMDSP}${RCDSP}${RST}\$ "
 }
-
-# Hook function to reckon PS1 every time
-PROMPT_COMMAND=__updateMyPrompt
