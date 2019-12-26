@@ -3,20 +3,6 @@ function __updateMyPrompt {
     # First of all, remember last RC
     local LASTRC=$?
 
-    # Colors and styles
-    local RST="\[\e[0m\]"         # Reset
-    local RVS="\[\e[7m\]"         # Reverse
-    local RSTRVS="\[\e[27m\]"     # Reset Reverse
-    local BLD="\[\e[1m\]"         # Bold
-    local GRN="\[\e[32m\]"        # Green
-    local WHT="\[\e[97m\]"        # White
-    local BLU="\[\e[34m\]"        # Blue
-    local YLW="\[\e[93m\]"        # Yellow
-    local RED="\[\e[91m\]"        # Red
-    local VLT="\[\e[38;5;55m\]"   # Violet
-    local BGVLT="\[\e[48;5;55m\]" # Background Violet
-    local BGRST="\[\e[49m\]"      # Background default
-    
     # Handle last exec duration
     local TMDSP=""
     if test -n "$LAST_EXEC_TIME_STR"; then
