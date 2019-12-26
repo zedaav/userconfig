@@ -9,6 +9,14 @@
         "command": "workbench.action.terminal.toggleTerminal"
     },
     {
+        "key": "ctrl+t ctrl+n",
+        "command": "workbench.action.terminal.new"
+    },
+    {
+        "key": "ctrl+t ctrl+k",
+        "command": "workbench.action.terminal.kill"
+    },
+    {
         "key": "ctrl+shift+m",
         "command": "workbench.action.toggleMaximizedPanel",
         "when": "terminalFocus"
