@@ -17,7 +17,7 @@ function __checkUserConfigUpdates {
     # Verify if we're late on master
     if test "$(cd "${USER_CONFIG_ROOT}" && git rev-list --right-only --count master...origin/master 2> /dev/null)" -gt 0; then
         # Config is late: warning message
-        echo -e "${BLD}${YLW}!!! userconfig has been updated; please pull !!!${RST}"
+        echo -e "${STL_BLD}${STL_YLW}!!! userconfig has been updated; please pull !!!${STL_RST}"
     fi
 }
 
