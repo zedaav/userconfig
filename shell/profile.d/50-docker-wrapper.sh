@@ -64,5 +64,7 @@ function __wrapToDocker {
         "$@"
 }
 
-# Install alias
-alias dk=__wrapToDocker
+# Install alias (only if docker is installed)
+if __has docker; then
+    alias dk=__wrapToDocker
+fi
