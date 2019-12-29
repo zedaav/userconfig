@@ -35,9 +35,19 @@ function __wrapToDocker {
     fi
     cp /etc/passwd "$TMPPASSWD"
     cp /etc/group "$TMPGROUP"
+    SHADOWBIND=""
     if grep -qE "^`id -un`:" $TMPPASSWD; then
-        # Just rename user to required one
-        sed -i $TMPPASSWD -e "s|^`id -un`:|${DKUSER}:|"
+        if test "`id -un`" != "${DKUSER}"; then
+            # Just rename user to required one
+            sed -i $TMPPASSWD -e "s|^`id -un`:|${DKUSER}:|"
+        elif test "${EXEC_ENV}" != "wsl"; then
+            # We can bind the shadow file to get the password working in docker
+            # We can do it only in this case since /etc/shadow is only readable (and copy-able) by root
+            # This means:
+            # - on Linux: we can't copy to a temp loc + rename the user
+            # - on WSL: we can't copy + bind it from Windows FS PoV
+            SHADOWBIND="-v /etc/shadow:/etc/shadow:ro"
+        fi
     else
         # Add entry (user probably exists in NIS only)
         echo "${DKUSER}:x:`id -u`:`id -g`:${DKUSER},,,:${HOME}:/bin/bash" >> $TMPPASSWD
@@ -53,6 +63,7 @@ function __wrapToDocker {
         -v "${HOME}":"${HOME}" \
         -v $TMPPASSWD:/etc/passwd:ro \
         -v $TMPGROUP:/etc/group:ro \
+        ${SHADOWBIND} \
         -v /etc/timezone:/etc/timezone:ro \
         -v /etc/localtime:/etc/localtime:ro \
         -e DKIMG=${DKIMG} \
