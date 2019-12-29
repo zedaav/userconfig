@@ -26,11 +26,11 @@ function __updateMyPrompt {
     # Check execution environment
     local XENV=""
     local TENV=""
-    if test -n "${EXEX_ENV}"; then
-        XENV="[${EXEX_ENV}] "
+    if test -n "${EXEC_ENV}"; then
+        XENV="[${EXEC_ENV}] "
 
         # Maybe DKIMG is set?
-        if test "${EXEX_ENV}" == "dk" -a -n "${DKIMG}"; then
+        if test "${EXEC_ENV}" == "dk" -a -n "${DKIMG}"; then
             # Add it to terminal window title
             TENV="(${DKIMG}) "
         fi

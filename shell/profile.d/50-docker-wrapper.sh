@@ -24,7 +24,7 @@ function __wrapToDocker {
     DKDIR="${DKDIR:-${PWD}}"
 
     # Prepare user settings
-    if uname -a | grep -q Microsoft; then
+    if test "${EXEC_ENV}" == "wsl"; then
         # WSL: prepare tmp files a bit differently
         local TMPPASSWD=/c/tmp/passwd
         local TMPGROUP=/c/tmp/group
