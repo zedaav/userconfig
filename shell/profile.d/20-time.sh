@@ -3,10 +3,13 @@
 # Function for duration pretty printing
 function __prettyPrintDuration {
     local DURATION="$1"
-    local DAYS=$(( $DURATION / (60*60*24) ))
-    local HOURS=$(( $DURATION / (60*60) ))
-    local MINS=$(( $DURATION / 60 ))
-    local SECS=$(( $DURATION % 60 ))
+    local M=$((60))
+    local H=$(($M*60))
+    local D=$(($H*24))
+    local DAYS=$(( $DURATION / $D ))
+    local HOURS=$(( ($DURATION - $DAYS*$D) / $H ))
+    local MINS=$(( ($DURATION - $DAYS*$D - $HOURS*$H) / $M ))
+    local SECS=$(( $DURATION % $M ))
 
     # Print results
     if test $DAYS -gt 0; then
