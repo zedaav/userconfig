@@ -16,8 +16,8 @@ function __checkUserConfigUpdates {
 
     # Verify if we're late on master
     local DELTA_COMMITS="$(__getCommitsDelta "${USER_CONFIG_ROOT}")"
-    if test -n "${DELTA_COMMITS}" && test "${DELTA_COMMITS}" -gt 0; then
-        # Config is late: warning message
+    if test -n "${DELTA_COMMITS}" && test "${DELTA_COMMITS}" -gt 0 && test -t 0; then
+        # Config is late: warning message (only if we're in a terminal)
         echo -e "${STL_BLD}${STL_YLW}!!! userconfig has been updated; please pull !!!${STL_RST}"
     fi
 }
