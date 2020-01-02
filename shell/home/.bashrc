@@ -9,3 +9,10 @@ USER_CONFIG_ROOT="$(dirname "$(dirname "$(dirname "$(readlink -f "$BASH_SOURCE")
 for i in $USER_CONFIG_ROOT/shell/profile.d/*.sh; do
     source $i
 done
+
+# Load local files
+if test -d "$HOME/.local/profile.d"; then
+    for i in $HOME/.local/profile.d/*.sh; do
+        source $i
+    done
+fi
