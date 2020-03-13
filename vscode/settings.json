@@ -1,6 +1,13 @@
 {
     "editor.renderWhitespace": "all",
     "editor.formatOnSave": true,
+    "editor.rulers": [
+        {
+            "column": 160,
+            "color": "#5c121c"
+        }
+    ],
+    "editor.minimap.size": "fit",
     "git.confirmSync": false,
     "git.enableSmartCommit": true,
     "window.zoomLevel": -1,
@@ -27,6 +34,7 @@
     "python.workspaceSymbols.rebuildOnFileSave": true,
     "window.titleBarStyle": "custom",
     "gitlens.views.repositories.location": "scm",
+    "gitlens.views.repositories.files.layout": "tree",
     "cSpell.userWords": [
         "gnupg",
         "jnlp",
