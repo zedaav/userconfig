@@ -36,8 +36,11 @@
     "gitlens.views.repositories.location": "scm",
     "gitlens.views.repositories.files.layout": "tree",
     "cSpell.userWords": [
+        "SNMP",
         "gnupg",
         "jnlp",
+        "nargs",
+        "stuffnodes",
         "woma"
     ],
     "terminal.integrated.shell.linux": "/bin/bash",
