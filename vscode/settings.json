@@ -1,4 +1,9 @@
 {
+    "[python]": {
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": true
+        }
+    },
     "editor.renderWhitespace": "all",
     "editor.formatOnSave": true,
     "editor.rulers": [
@@ -43,5 +48,5 @@
         "stuffnodes",
         "woma"
     ],
-    "terminal.integrated.shell.linux": "/bin/bash",
+    "terminal.integrated.shell.linux": "/bin/bash"
 }
