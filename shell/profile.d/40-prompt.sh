@@ -49,6 +49,13 @@ function __updateMyPrompt {
         GDSP="${VLT}${RVS}▌${RSTRVS}${WHT}${BGVLT}${GIT_BRANCH}${BGRST}${VLT}${RVS}▐${RSTRVS}"
     fi
 
+    # Docker context
+    __updatedockerContext
+    local DKCTX=""
+    if test -n "${DK_CONTEXT}"; then
+        DKCTX="${RED}{${DK_CONTEXT}}${RST}"
+    fi
+
     # Last RC is non-0?
     local RCDSP=""
     if test "${LASTRC}" != 0; then
@@ -56,5 +63,5 @@ function __updateMyPrompt {
     fi
 
     # Finally set PS1
-    export PS1="\[\e]0;${XENV}${TENV}\u@\h: \w\a\]${XENV}${VENV}${BLD}${GRN}\u@\h${WHT}:${BLU}\w${RST}${GDSP}${TMDSP}${RCDSP}${RST}\$ "
+    export PS1="\[\e]0;${XENV}${TENV}\u@\h: \w\a\]${XENV}${VENV}${BLD}${GRN}\u@\h${WHT}:${BLU}\w${RST}${GDSP}${DKCTX}${TMDSP}${RCDSP}${RST}\$ "
 }
