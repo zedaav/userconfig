@@ -1,9 +1,4 @@
 {
-    "[python]": {
-        "editor.codeActionsOnSave": {
-            "source.organizeImports": true
-        }
-    },
     "editor.renderWhitespace": "all",
     "editor.formatOnSave": true,
     "editor.rulers": [
@@ -16,37 +11,10 @@
     "git.confirmSync": false,
     "git.enableSmartCommit": true,
     "window.zoomLevel": -1,
-    "files.watcherExclude": {
-        "**/leaf-data/**": true,
-        "**/.repo/**": true,
-        "**/.tox/**": true,
-        "**/venv/**": true
-    },
     "explorer.confirmDelete": false,
     "diffEditor.ignoreTrimWhitespace": true,
-    "python.pythonPath": "/usr/bin/python3",
-    "python.linting.enabled": true,
-    "python.linting.pylintEnabled": false,
-    "python.linting.flake8Enabled": true,
-    "python.linting.flake8Args": [
-        "--ignore=E501,E203,W503"
-    ],
-    "python.formatting.provider": "black",
-    "python.formatting.blackArgs": [
-        "-l",
-        "160"
-    ],
-    "python.workspaceSymbols.rebuildOnFileSave": true,
     "window.titleBarStyle": "custom",
     "gitlens.views.repositories.location": "scm",
     "gitlens.views.repositories.files.layout": "tree",
-    "cSpell.userWords": [
-        "SNMP",
-        "gnupg",
-        "jnlp",
-        "nargs",
-        "stuffnodes",
-        "woma"
-    ],
     "terminal.integrated.shell.linux": "/bin/bash"
 }
