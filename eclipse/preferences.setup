@@ -4,6 +4,7 @@
     xmlns:xmi="http://www.omg.org/XMI"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:setup="http://www.eclipse.org/oomph/setup/1.0"
+    xmlns:setup.p2="http://www.eclipse.org/oomph/setup/p2/1.0"
     name="davidPrefs"
     label="David Prefs">
   <stream name="davidprefs">
@@ -94,6 +95,13 @@
             key="/instance/org.eclipse.jdt.ui/sp_cleanup.organize_imports"
             value="true"/>
       </setupTask>
+    </setupTask>
+    <setupTask
+        xsi:type="setup.p2:P2Task">
+      <requirement
+          name="org.eclipse.tm.terminal.feature.feature.group"/>
+      <repository
+          url="http://download.eclipse.org/releases/latest"/>
     </setupTask>
   </stream>
   <description>David Eclipse preferences</description>
