@@ -10,11 +10,13 @@
     "editor.minimap.size": "fit",
     "git.confirmSync": false,
     "git.enableSmartCommit": true,
-    "window.zoomLevel": -1,
     "explorer.confirmDelete": false,
-    "diffEditor.ignoreTrimWhitespace": true,
     "window.titleBarStyle": "custom",
     "gitlens.views.repositories.location": "scm",
     "gitlens.views.repositories.files.layout": "tree",
-    "terminal.integrated.shell.linux": "/bin/bash"
+    "terminal.integrated.shell.linux": "/bin/bash",
+    "files.associations": {
+        "*.mak": "makefile"
+    },
+    "python.showStartPage": false
 }
