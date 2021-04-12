@@ -57,14 +57,6 @@
       </setupTask>
       <setupTask
           xsi:type="setup:CompoundTask"
-          name="org.eclipse.tm.terminal.control">
-        <setupTask
-            xsi:type="setup:PreferenceTask"
-            key="/instance/org.eclipse.tm.terminal.control/TerminalPrefInvertColors"
-            value="true"/>
-      </setupTask>
-      <setupTask
-          xsi:type="setup:CompoundTask"
           name="org.eclipse.e4.ui.css.swt.theme">
         <setupTask
             xsi:type="setup:PreferenceTask"
