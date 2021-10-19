@@ -18,5 +18,6 @@
     "files.associations": {
         "*.mak": "makefile"
     },
-    "python.showStartPage": false
+    "python.showStartPage": false,
+    "editor.bracketPairColorization.enabled": true
 }
