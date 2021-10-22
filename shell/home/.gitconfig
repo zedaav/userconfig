@@ -1,0 +1,7 @@
+[user]
+	email = david.pochet@gmail.com
+	name = David Pochet
+[color]
+	ui = auto
+[fetch]
+	prune = true
