@@ -19,5 +19,6 @@
         "*.mak": "makefile"
     },
     "python.showStartPage": false,
-    "editor.bracketPairColorization.enabled": true
+    "editor.bracketPairColorization.enabled": true,
+    "cSpell.allowCompoundWords": true
 }
