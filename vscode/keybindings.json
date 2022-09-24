@@ -34,5 +34,9 @@
     {
         "key": "ctrl+shift+R",
         "command": "workbench.action.tasks.runTask"
+    },
+    {
+        "key": "ctrl+shift+t",
+        "command": "workbench.action.tasks.test"
     }
 ]
