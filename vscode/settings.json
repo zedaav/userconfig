@@ -20,5 +20,6 @@
     },
     "python.showStartPage": false,
     "editor.bracketPairColorization.enabled": true,
-    "cSpell.allowCompoundWords": true
+    "cSpell.allowCompoundWords": true,
+    "workbench.startupEditor": "none"
 }
