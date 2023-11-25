@@ -39,8 +39,8 @@ function __updateMyPrompt {
     # Python virtual env?
     local VENV=""
     if test -n "${VIRTUAL_ENV}"; then
-        local VENV_NAME="${VIRTUAL_ENV_PROMPT:-$(basename ${VIRTUAL_ENV})}"
-        VENV="${YLW}(${VENV_NAME})${RST} "
+        local VENV_NAME="${VIRTUAL_ENV_PROMPT:-($(basename ${VIRTUAL_ENV}))}"
+        VENV="${YLW}${VENV_NAME}${RST} "
     fi
 
     # Git branch
