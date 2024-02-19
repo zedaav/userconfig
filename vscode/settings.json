@@ -21,5 +21,6 @@
     "python.showStartPage": false,
     "editor.bracketPairColorization.enabled": true,
     "cSpell.allowCompoundWords": true,
-    "workbench.startupEditor": "none"
+    "workbench.startupEditor": "none",
+    "git.allowForcePush": true
 }
