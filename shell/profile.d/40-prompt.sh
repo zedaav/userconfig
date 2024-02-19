@@ -1,8 +1,5 @@
 # Custom path with hour and last command result
 function __updateMyPrompt {
-    # First of all, remember last RC
-    local LASTRC=$?
-
     # Colors
     local RST="\[${STL_RST}\]"    # Reset
     local RVS="\[\e[7m\]"         # Reverse
@@ -16,12 +13,6 @@ function __updateMyPrompt {
     local VLT="\[\e[38;5;55m\]"   # Violet
     local BGVLT="\[\e[48;5;55m\]" # Background Violet
     local BGRST="\[\e[49m\]"      # Background default
-
-    # Handle last exec duration
-    local TMDSP=""
-    if test -n "$LAST_EXEC_TIME_STR"; then
-        TMDSP="${YLW}[${LAST_EXEC_TIME_STR}]"
-    fi
 
     # Check execution environment
     local XENV=""
@@ -57,12 +48,6 @@ function __updateMyPrompt {
         DKCTX="${RED}{${DK_CONTEXT}}${RST}"
     fi
 
-    # Last RC is non-0?
-    local RCDSP=""
-    if test "${LASTRC}" != 0; then
-        RCDSP="${RED}[${LASTRC}]"
-    fi
-
     # Finally set PS1
-    export PS1="\[\e]0;${XENV}${TENV}\u@\h: \w\a\]${XENV}${VENV}${BLD}${GRN}\u@\h${WHT}:${BLU}\w${RST}${GDSP}${DKCTX}${TMDSP}${RCDSP}${RST}\$ "
+    export PS1="\[\e]0;${XENV}${TENV}\u@\h: \w\a\]${XENV}${VENV}${BLD}${GRN}\u@\h${WHT}:${BLU}\w${RST}${GDSP}${DKCTX}${RST}\$ "
 }
